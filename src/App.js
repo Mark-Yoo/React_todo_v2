@@ -81,7 +81,7 @@ function App() {
       } else {
         setCopyTodos(todos);
       }
-      navItems.map(navItem => setNavItems(navItem.id === id ? {...navItem, checked: true} : {...navItem, checekd: false}));
+      setNavItems(navItems.map(navItem => navItem.id === id ? {...navItem, checked: true} : {...navItem, checked: false}));
     }, [navItems, todos],
   )
 
