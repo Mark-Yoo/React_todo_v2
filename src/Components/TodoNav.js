@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import {
   MdRadioButtonChecked,
   MdRadioButtonUnchecked,
@@ -6,32 +6,13 @@ import {
 import cn from 'classnames';
 import './TodoNav.scss';
 
-const TodoNav = () => {
-  const [navItems, setNavItems] = useState(
-    [
-      {
-        id: 'All',
-        item: 'All',
-        checked: true,
-      },
-      {
-        id: 'Todo',
-        item: 'Todo',
-        checked: false,
-      },
-      {
-        id: 'Done',
-        item: 'Done',
-        checked: false,
-      },
-    ]
-  )
+const TodoNav = ({navItems, onNav}) => {
 
   return(
     <div className="TodoNav">
       {navItems.map((navItem) => {
         return(
-          <div key={navItem.id} className="nav">
+          <div key={navItem.id} onClick={() => onNav(navItem.id)} className="nav">
             <div className={cn("checkbox", (navItem.checked))}>
               {navItem.checked ? <MdRadioButtonChecked/> : <MdRadioButtonUnchecked/>}
               <div className="navItem">{navItem.item}
